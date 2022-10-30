@@ -7,9 +7,6 @@ menu = ReplyKeyboardMarkup(
         [
             KeyboardButton(text="🔁 Xatosiz o'girish"),
             KeyboardButton(text="🌐 Tarjima qiling")
-        ],
-        [
-            KeyboardButton(text="📝 Xabar yuborish"),
         ]
     ], resize_keyboard=True
 )
