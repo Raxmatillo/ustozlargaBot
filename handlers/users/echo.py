@@ -4,6 +4,6 @@ from loader import dp
 
 
 # Echo bot
-@dp.message_handler(state=None)
+@dp.message_handler(state="*")
 async def bot_echo(message: types.Message):
-    await message.answer(message.text)
+    await message.answer("Amalni bajaring yoki quyidagi tugmalardan birini tanlang 👇")
