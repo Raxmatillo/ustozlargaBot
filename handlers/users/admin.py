@@ -44,4 +44,4 @@ async def send_reklama(message: types.Message, state: FSMContext):
 @dp.message_handler(IsAdmin(), text="📊 Statistika")
 async def show_statistics(message: types.Message):
     count = db.count_users()
-    await message.answer(f"<b>Botda foydalanuvchilar soni: {count} ta</b>")
+    await message.answer(f"<b>Botda foydalanuvchilar soni: {count[0]} ta</b>")
