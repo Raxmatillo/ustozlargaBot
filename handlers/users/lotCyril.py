@@ -13,9 +13,8 @@ async def bot_echo_lotinKiril(message: types.Message):
 @dp.message_handler(state=LotinKiril.startLotinKiril)
 async def convert(message: types.Message, state: FSMContext):
     if message.text in ["📝 Xabar yuborish", "🔁 Xatosiz o'girish", "🌐 Tarjima qiling", "📌 Reklama", "📊 Statistika"]:
-        await state.finish()
         await message.answer("lotin kiriil yakunlandi")
-        print("lotinKril state to'xtadi")
+        await state.finish()
     else:
         if message.text[0] in lotin_kril.latin:
             await message.answer(lotin_kril.ToCyrilic(message.text))
