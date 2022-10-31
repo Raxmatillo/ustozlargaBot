@@ -13,8 +13,9 @@ async def get_user_message(message: types.Message):
 
 
 @dp.message_handler(state=SendMessageToAdmin.message, content_types="text")
-async def send_to_admin(message: types.Message):
+async def send_to_admin(message: types.Message, state: FSMContext):
     await message.answer("ℹ️ Tashakkur! Xabaringiz adminga yuborildi")
+    await state.finish()
     for admin in ADMINS:
         await bot.send_message(chat_id=admin, text=message.text, disable_web_page_preview=True)
 
