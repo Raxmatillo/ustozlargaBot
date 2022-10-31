@@ -9,10 +9,8 @@ from states.AdminState import ReklamaState
 from loader import dp, db, bot
 
 @dp.message_handler(IsAdmin(), text="/admin")
-async def admin_panel(message: types.Message):
-    users = db.select_all_users()
-    print(users[0][0])
-    await message.answer(users, reply_markup=admin_keyboards)
+async def admin_panel(message: types.Message):  
+    await message.answer("Siz adminpaneldasiz!", reply_markup=admin_keyboards)
 
 @dp.message_handler(IsAdmin(), text="📌 Reklama")
 async def send_ad_to_all(message: types.Message):
