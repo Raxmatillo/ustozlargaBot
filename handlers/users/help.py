@@ -7,7 +7,15 @@ from loader import dp
 @dp.message_handler(CommandHelp())
 async def bot_help(message: types.Message):
     await message.answer(
-        "<b>- Bot orqali hariflarni lotindan kirilga va kirildan lotinga oson o'giring\n</b>"
-        "<b>- O'zbek/Rus/Ingliz tillarida so'zlarni tarjima qiling\n\n</b>"
-        "<i>Agar shikoyat va takliflar bo'lsa bizga yuboring, albatta ko'rib chiqamiz!</i>"
+"""<b>❗️ Tarjima qilish uchun Qo'llanma! 📝</b>\n,
+Tarjima til kodi so'ng matnni yuboring
+Til kodlari:
+    /uz - o'zbekcha
+    /en - inglizcha,
+    /ru - ruscha,
+    /ar - arabcha,
+    /de - nemischa,
+    /ko - koreyscha,
+    /tr - turkcha\n,
+<i>Misol uchun:</i>  /uz Hammaga salom"""
         )
