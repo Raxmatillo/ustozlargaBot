@@ -17,5 +17,5 @@ Til kodlari:
     /de - nemischa,
     /ko - koreyscha,
     /tr - turkcha\n,
-<i>Misol uchun:</i>  /uz Hammaga salom"""
+<i>Misol uchun:</i>  /uz Hello World"""
         )
