@@ -13,3 +13,12 @@ menu = ReplyKeyboardMarkup(
         ]
     ], resize_keyboard=True
 )
+
+
+cancel = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text="❌ Bekor qilish")
+        ]
+    ], resize_keyboard=True
+)

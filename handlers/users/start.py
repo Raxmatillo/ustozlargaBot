@@ -15,15 +15,11 @@ async def bot_start(message: types.Message):
     try:
         if str(message.from_user.id) not in str(users):
             db.add_user(
-                user_id=message.from_user.id,
+                telegram_id=message.from_user.id,
                 full_name=message.from_user.full_name,
                 username=message.from_user.username
                 )
     except sqlite3.IntegrityError as err:
         await bot.send_message(chat_id=ADMINS[0], text=err)
 
-    await message.answer("Xush kelibsiz!", reply_markup=menu)
-    # Adminga xabar beramiz
-    count = db.count_users()
-    msg = f"{message.from_user.full_name} bazaga qo'shildi.\nBazada {count[0]} ta foydalanuvchi bor."
-    await bot.send_message(chat_id=ADMINS[0], text=msg)
+    await message.answer("Xush kelibsiz")

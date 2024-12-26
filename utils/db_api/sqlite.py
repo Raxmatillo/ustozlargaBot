@@ -30,10 +30,10 @@ class Database:
     def create_table_users(self):
         sql = """
         CREATE TABLE IF NOT EXISTS users(
-            user_id INT NOT NULL,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            telegram_id INTEGER NOT NULL UNIQUE,
             full_name VARCHAR(255) NOT NULL,
-            username VARCHAR(255) NULL,
-            PRIMARY KEY (user_id)
+            username VARCHAR(255) NULL
             );
 """
         self.execute(sql, commit=True)
@@ -45,13 +45,13 @@ class Database:
         ])
         return sql, tuple(parameters.values())
 
-    def add_user(self, user_id: int, full_name: str, username: str):
+    def add_user(self, telegram_id: int, full_name: str, username: str):
         # SQL_EXAMPLE = "INSERT INTO Users(id, Name, email) VALUES(1, 'John', 'John@gmail.com')"
 
         sql = """
-        INSERT INTO users(user_id, full_name, username) VALUES(?, ?, ?)
+        INSERT INTO users(telegram_id, full_name, username) VALUES(?, ?, ?)
         """
-        self.execute(sql, parameters=(user_id, full_name, username), commit=True)
+        self.execute(sql, parameters=(telegram_id, full_name, username), commit=True)
 
     def select_all_users(self):
         sql = """
@@ -64,23 +64,9 @@ class Database:
         sql = "SELECT * FROM users WHERE "
         sql, parameters = self.format_args(sql, kwargs)
         return self.execute(sql, parameters=parameters, fetchone=True)
-    
-    def select_all_user_id(self):
-        sql = """
-        SELECT user_id FROM users
-        """
-        return self.execute(sql, fetchall=True)
 
     def count_users(self):
         return self.execute("SELECT COUNT(*) FROM users;", fetchone=True)
-
-    def update_user_email(self, address, user_id):
-        # SQL_EXAMPLE = "UPDATE Users SET email=mail@gmail.com WHERE id=12345"
-
-        sql = f"""
-        UPDATE users SET phone=? WHERE user_id=?
-        """
-        return self.execute(sql, parameters=(address, user_id), commit=True)
 
     def delete_users(self):
         self.execute("DELETE FROM users WHERE TRUE", commit=True)

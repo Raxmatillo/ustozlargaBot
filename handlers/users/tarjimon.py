@@ -19,10 +19,10 @@ async def to_eng(message: types.Message):
         return
     translated_text = translator.translate(sentence, src='auto', dest=lang)
     src = translated_text.src
-    translated_text_ = translator.translate(sentence, src=src, dest=src)
-    pronunciation = translated_text_.pronunciation
     word = translated_text.text
-    if pronunciation is not None and pronunciation != translated_text.origin:
+    translated_text_ = translator.translate(word, src=src, dest=src)
+    pronunciation = translated_text_.pronunciation
+    if pronunciation is not None and pronunciation != word:
         pronunciation_text = f"\n<b>Talaffuz: </b> {pronunciation}"
     else: pronunciation_text=''
     await message.reply(f"<b>Tarjima: </b>{word}{pronunciation_text}")
